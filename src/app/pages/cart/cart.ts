@@ -77,7 +77,7 @@ export class Cart implements OnInit, AfterViewInit {
               productsDetails: this.cartItems.map(item => item.name).join(', ')
             };
 
-            this.http.post('http://localhost:8080/api/orders/create', orderData).subscribe({
+            this.http.post('https://npc-backend-ul83.onrender.com/api/orders/create', orderData).subscribe({
               next: (res: any) => {
                 this.checkoutMessage = `> ORDEN [ID:00${res.orderId}] REGISTRADA EN BASE DE DATOS. VACIANDO INVENTARIO...`;
                 this.cdr.detectChanges();

@@ -25,7 +25,7 @@ export class DropDetail implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.http.get(`http://localhost:8080/api/products/${id}`).subscribe({
+    this.http.get(`https://npc-backend-ul83.onrender.com/api/products/${id}`).subscribe({
       next: (data) => {
         this.product = data;
         this.loading = false;

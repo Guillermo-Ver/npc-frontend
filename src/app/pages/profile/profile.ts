@@ -33,7 +33,7 @@ export class Profile implements OnInit {
   }
 
   fetchOrderHistory() {
-    this.http.get<any[]>(`http://localhost:8080/api/orders/user/${this.username}`).subscribe({
+    this.http.get<any[]>(`https://npc-backend-ul83.onrender.com/api/orders/user/${this.username}`).subscribe({
       next: (data) => {
         // Ordenamos las compras para que las más nuevas salgan arriba
         this.orders = data.sort((a, b) => new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime());

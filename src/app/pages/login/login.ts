@@ -30,7 +30,7 @@ export class Login {
     if (this.isLoginMode) {
       const credentials = { email: this.email, password: this.password };
 
-      this.http.post<any>('http://localhost:8080/api/auth/login', credentials).subscribe({
+      this.http.post<any>('https://npc-backend-ul83.onrender.com/api/auth/login', credentials).subscribe({
         next: (res) => {
           this.isError = false;
           this.message = '> ACCESS_GRANTED. Iniciando protocolo...';
@@ -50,7 +50,7 @@ export class Login {
     } else {
       const newUser = { username: this.username, email: this.email, password: this.password };
 
-      this.http.post<any>('http://localhost:8080/api/auth/register', newUser).subscribe({
+      this.http.post<any>('https://npc-backend-ul83.onrender.com/api/auth/register', newUser).subscribe({
         next: (res) => {
           this.isError = false;
           this.message = '> SYSTEM: Registro completado.';

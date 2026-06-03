@@ -21,7 +21,7 @@ export class Catalog implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8080/api/products').subscribe({
+    this.http.get<any[]>('https://npc-backend-ul83.onrender.com/api/products').subscribe({
       next: (data) => {
         this.products = data;
         this.loading = false;
