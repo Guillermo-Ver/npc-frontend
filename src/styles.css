@@ -1,0 +1,332 @@
+/* --- NPC // SYSTEM STYLESHEET_V5.0 (ANGULAR) --- */
+
+:root {
+    --neon-green: #00FF41;
+    --dark-bg: #050505;
+    --card-bg: #0a0a0a;
+    --border-color: #333;
+}
+
+body {
+    background-color: #000000 !important;
+    color: #e0e0e0;
+    font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar-brand,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'VT323', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.text-primary {
+    color: var(--neon-green) !important;
+}
+
+.text-muted {
+    color: #aaaaaa !important;
+}
+
+.price-tag {
+    font-family: 'VT323';
+    font-size: 1.8rem;
+    color: var(--neon-green);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-enter {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+    color: var(--neon-green);
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #888 !important;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--neon-green) !important;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.btn {
+    border-radius: 0 !important;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px 30px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--neon-green) !important;
+    border-color: var(--neon-green) !important;
+    color: #000 !important;
+}
+
+.btn-primary:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px var(--neon-green);
+    transform: translateY(-2px);
+}
+
+.btn-outline-light {
+    border: 1px solid #555;
+    color: #ccc;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.form-control {
+    background-color: #111 !important;
+    border: 1px solid var(--border-color) !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    padding: 10px;
+    font-family: 'Roboto Mono';
+}
+
+.form-control:focus {
+    background-color: #000 !important;
+    border-color: var(--neon-green) !important;
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    color: #666 !important;
+    font-size: 0.8rem;
+}
+
+.form-label {
+    color: var(--neon-green);
+    font-family: 'VT323';
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid var(--neon-green);
+}
+
+.product-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid #222 !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: var(--neon-green) !important;
+    transform: translateY(-5px);
+}
+
+.card-header-tech {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background-color: #000;
+    font-size: 0.75rem;
+    color: #666;
+    font-family: 'VT323';
+    border-bottom: 1px solid #222;
+}
+
+.img-container {
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #050505;
+    position: relative;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(110%);
+    transition: all 0.4s ease;
+}
+
+.product-card:hover .card-img-top {
+    filter: grayscale(0%) contrast(100%);
+    transform: scale(1.05);
+}
+
+.modal-content {
+    border: 1px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.hover-glow:hover {
+    text-shadow: 0 0 8px #00FF41;
+}
+
+/* ANIMACIÓN DEL CARRITO */
+@keyframes cartPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7);
+        background-color: transparent;
+    }
+
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 15px 5px rgba(0, 255, 65, 0.9);
+        background-color: rgba(0, 255, 65, 0.2);
+        color: #00FF41;
+        border-color: #00FF41;
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0);
+        background-color: transparent;
+    }
+}
+
+.cart-animating {
+    animation: cartPulse 0.6s ease-out;
+}
+
+/* EL FONDO Y LA CUADRÍCULA */
+.tech-bg {
+    background-color: #050505;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.tech-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Dibuja una cuadrícula de estilo radar/tecnológico */
+    background-image:
+        linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 1;
+
+    /* ANIMACIÓN DEL LATIDO */
+    animation: digitalHeartbeat 3s infinite;
+}
+
+/* 2 Latidos rápidos y descanso (efecto electrocardiograma) */
+@keyframes digitalHeartbeat {
+    0% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    15% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+
+    30% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    45% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+}
+
+/* EL CARRUSEL */
+.carousel,
+.carousel-inner,
+.carousel-item {
+    height: 100vh;
+}
+
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 80%;
+}
+
+:host {
+    display: block;
+    overflow-y: hidden;
+}

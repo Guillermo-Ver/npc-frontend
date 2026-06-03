@@ -1,0 +1,71 @@
+<section class="py-5 bg-black" style="min-height: 85vh;">
+    <div class="container mt-5">
+        @if (loading) {
+        <p class="text-primary blink text-center" style="font-family: 'VT323'; font-size: 1.5rem;">> LOADING_ASSETS...
+        </p>
+        } @else if (product) {
+
+        <a routerLink="/drops" class="text-secondary text-decoration-none mb-4 d-inline-block font-monospace">
+            &lt; RETURN_TO_CATALOG
+        </a>
+
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="card bg-black border-primary p-2 position-relative">
+                    <div class="position-absolute top-0 start-0 m-3 px-2 bg-dark text-primary border border-primary font-monospace"
+                        style="z-index: 2;">
+                        ID:00{{ product.id }}
+                    </div>
+                    <img [src]="product.imageUrl" class="img-fluid border border-secondary" alt="{{ product.name }}">
+                </div>
+            </div>
+
+            <div class="col-md-6 text-white" style="font-family: monospace;">
+                <h2 class="text-uppercase mb-1" style="color: #00FF41; font-family: 'VT323'; font-size: 3rem;">{{
+                    product.name }}</h2>
+                <h4 class="text-secondary mb-4">{{ product.price }}€</h4>
+
+                <p class="mb-4 text-muted lh-lg text-justify">{{ product.description }}</p>
+
+                <div class="border border-secondary p-3 mb-4 bg-dark bg-opacity-25">
+                    <div class="row border-bottom border-secondary pb-2 mb-2">
+                        <div class="col-4 text-muted">TAG:</div>
+                        <div class="col-8 text-white">{{ product.tag }}</div>
+                    </div>
+                    <div class="row border-bottom border-secondary pb-2 mb-2">
+                        <div class="col-4 text-muted">MATERIAL:</div>
+                        <div class="col-8 text-white">{{ product.materials || 'UNKNOWN_FABRIC' }}</div>
+                    </div>
+                    <div class="row border-bottom border-secondary pb-2 mb-2">
+                        <div class="col-4 text-muted">LOCATION:</div>
+                        <div class="col-8 text-white">{{ product.productionLocation || 'CLASSIFIED' }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-muted">DESIGNER:</div>
+                        <div class="col-8 text-white">
+                            {{ product.designerName || 'NPC_CORE' }}
+                            @if (product.designerInstagram) {
+                            <a [href]="'https://instagram.com/' + product.designerInstagram" target="_blank"
+                                class="text-primary text-decoration-none ms-2">
+                                [@{{ product.designerInstagram }}]
+                            </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <button (click)="addToCart()" class="btn w-100 py-3 text-uppercase position-relative transition-all"
+                    [class.btn-outline-primary]="!isGlowing" [class.btn-success]="isGlowing"
+                    style="font-family: 'VT323'; font-size: 1.5rem; letter-spacing: 2px;">
+
+                    @if (!isGlowing) {
+                    [ ADD_TO_INVENTORY ]
+                    } @else {
+                    > ASSET_ACQUIRED < } </button>
+            </div>
+        </div>
+        } @else {
+        <p class="text-danger text-center font-monospace">> ERROR_404: ASSET_NOT_FOUND</p>
+        }
+    </div>
+</section>

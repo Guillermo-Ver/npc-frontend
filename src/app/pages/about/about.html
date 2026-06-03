@@ -1,0 +1,67 @@
+<section class="py-5 bg-black" style="min-height: 85vh;">
+    <div class="container mt-5">
+        <h2 class="text-white mb-5 text-center" style="font-family: 'VT323', monospace; font-size: 3rem;">
+            &gt; UBICACIÓN_Y_CONTACTO
+        </h2>
+
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="card bg-black border-primary p-2 h-100">
+                    <h4 class="text-primary mb-3 font-monospace">&gt; COORDENADAS_HQ</h4>
+
+                    <div class="ratio ratio-1x1 border border-secondary" style="max-height: 400px;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.6749987979147!2d-3.705672084600644!3d40.41551156360408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287e07664e43%3A0x6e2df2118311a2f6!2sPuerta%20del%20Sol%2C%2028012%20Madrid!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses"
+                            style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(120%);" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                    <div class="mt-3 text-secondary font-monospace small">
+                        <p class="mb-1">> SECTOR: MADRID_CENTRO [ESPAÑA]</p>
+                        <p class="mb-0">> STATUS: OFFLINE_STORE_ONLY_BY_APPOINTMENT</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card bg-black border-secondary p-4 h-100">
+                    <h4 class="text-primary mb-4 font-monospace">&gt; TRANSMISIÓN_DIRECTA</h4>
+
+                    @if (isSubmitted) {
+                    <div
+                        class="alert bg-dark text-success border-success font-monospace text-center py-5 h-100 d-flex flex-column justify-content-center">
+                        <p class="mb-2">> TRANSMISIÓN ENVIADA AL SERVIDOR.</p>
+                        <p class="mb-0">> UN AGENTE CONTACTARÁ CONTIGO PRONTO.</p>
+                    </div>
+                    } @else {
+                    <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="d-flex flex-column h-100">
+                        <div class="mb-3">
+                            <label class="form-label text-muted font-monospace">> IDENTIFICADOR [NOMBRE]</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary font-monospace"
+                                [(ngModel)]="contactData.name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-muted font-monospace">> CANAL_DE_RETORNO [EMAIL]</label>
+                            <input type="email" class="form-control bg-dark text-white border-secondary font-monospace"
+                                [(ngModel)]="contactData.email" name="email" required>
+                        </div>
+                        <div class="mb-4 flex-grow-1">
+                            <label class="form-label text-muted font-monospace">> PAQUETE_DE_DATOS [MENSAJE]</label>
+                            <textarea class="form-control bg-dark text-white border-secondary font-monospace h-100"
+                                [(ngModel)]="contactData.message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" [disabled]="!contactForm.form.valid"
+                            class="btn w-100 py-3 mt-auto transition-all"
+                            [class.btn-outline-primary]="contactForm.form.valid"
+                            [class.btn-outline-secondary]="!contactForm.form.valid"
+                            style="font-family: 'VT323'; font-size: 1.3rem; letter-spacing: 2px;">
+                            [ ENVIAR_TRANSMISIÓN ]
+                        </button>
+                    </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

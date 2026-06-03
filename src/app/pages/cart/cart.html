@@ -1,0 +1,95 @@
+<section class="py-5 bg-black" style="min-height: 85vh;">
+    <div class="container mt-5">
+        <h2 class="text-white mb-4" style="font-family: 'VT323', monospace;">&gt; INVENTARIO_ACTUAL</h2>
+
+        <div class="row">
+            <div class="col-lg-8">
+                @if (cartItems.length === 0) {
+                <div class="alert bg-dark text-danger border-danger" style="font-family: monospace;">
+                    > NO HAY ELEMENTOS EN TU INVENTARIO.
+                </div>
+                } @else {
+                @for (item of cartItems; track $index) {
+                <div class="card bg-black border-secondary mb-3">
+                    <div class="row g-0 align-items-center p-2">
+                        <div class="col-md-2 text-center">
+                            <img [src]="item.imageUrl" class="img-fluid rounded" alt="item" style="max-height: 80px;">
+                        </div>
+                        <div class="col-md-6 text-white" style="font-family: monospace;">
+                            <h6 class="mb-0 text-uppercase" style="color: #00FF41;">{{ item.name }}</h6>
+                            <small class="text-muted">ID:00{{ item.id }} | {{ item.tag }}</small>
+                        </div>
+                        <div class="col-md-2 text-white text-center font-monospace">
+                            {{ item.price }}€
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <button (click)="removeItem($index)" class="btn btn-outline-danger btn-sm"
+                                style="font-family: 'VT323';">DROP_</button>
+                        </div>
+                    </div>
+                </div>
+                }
+                }
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card border-primary bg-black p-4 sticky-top" style="top: 100px;">
+                    <h4 class="text-white border-bottom border-secondary pb-3 mb-4"
+                        style="font-family: 'VT323', monospace;">
+                        &gt; CHECKOUT_DATA
+                    </h4>
+
+                    <div class="d-flex justify-content-between text-muted mb-2 font-monospace">
+                        <span>SUBTOTAL:</span>
+                        <span>{{ totalPrice }}€</span>
+                    </div>
+                    <div
+                        class="d-flex justify-content-between text-muted mb-4 font-monospace border-bottom border-secondary pb-3">
+                        <span>TASAS/ENVÍO:</span>
+                        <span>0.00€</span>
+                    </div>
+                    <div class="d-flex justify-content-between text-white mb-4"
+                        style="font-size: 1.5rem; font-family: 'VT323', monospace;">
+                        <span>TOTAL:</span>
+                        <span style="color: #00FF41;">{{ totalPrice }}€</span>
+                    </div>
+
+                    @if (checkoutMessage) {
+                    <div class="alert mb-4 text-center" [class.bg-dark]="isProcessing"
+                        [class.text-warning]="isProcessing" [class.bg-success]="!isProcessing"
+                        [class.text-black]="!isProcessing" style="font-family: 'VT323', monospace; border: none;">
+                        {{ checkoutMessage }}
+                    </div>
+                    }
+
+                    <div [class.d-none]="cartItems.length === 0" class="mt-3">
+
+                        <div class="form-check mb-4 border border-secondary p-3 bg-dark">
+                            <input class="form-check-input ms-1 rounded-0 border-primary" type="checkbox"
+                                [(ngModel)]="acceptedTerms" id="termsCheck" style="cursor: pointer;">
+                            <label class="form-check-label ms-2 text-muted small font-monospace text-justify"
+                                for="termsCheck" style="cursor: pointer;">
+                                > CONFIRMO: Entiendo que este producto es un <span class="text-white fw-bold">PRE-ORDER
+                                    (Fabricación bajo demanda)</span>. La producción comenzará tras el cierre del drop.
+                                El tiempo estimado de manufactura y envío es de 60 a 90 días. Renuncio al derecho de
+                                desistimiento estándar por tratarse de un artículo personalizado.
+                            </label>
+                        </div>
+
+                        @if (!acceptedTerms) {
+                        <button class="btn btn-outline-secondary w-100 py-2 font-monospace" disabled
+                            style="cursor: not-allowed;">
+                            [ ACEPTA LAS CONDICIONES PARA INICIAR PAGO ]
+                        </button>
+                        }
+
+                        <div [hidden]="!acceptedTerms">
+                            <div id="paypal-button-container"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

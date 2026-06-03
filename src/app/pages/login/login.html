@@ -1,0 +1,56 @@
+<section class="py-5 d-flex align-items-center bg-black" style="min-height: 85vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                
+                <div class="card product-card p-4 mt-5">
+                    <h2 class="text-white text-center mb-4">
+                        @if (isLoginMode) { &gt; SYSTEM_LOGIN } @else { &gt; NEW_USER }
+                    </h2>
+
+                    @if (message) {
+                        <div class="alert rounded-0 mb-4 p-2 text-center" 
+                             [class.bg-danger]="isError" [class.text-white]="isError"
+                             [class.bg-success]="!isError" [class.text-black]="!isError"
+                             style="font-family: 'VT323', monospace; font-size: 1.2rem; border: none;">
+                            {{ message }}
+                        </div>
+                    }
+
+                    <form (ngSubmit)="onSubmit()">
+                        
+                        @if (!isLoginMode) {
+                            <div class="mb-3">
+                                <label class="form-label">USERNAME_</label>
+                                <input type="text" class="form-control" name="username" [(ngModel)]="username" required>
+                            </div>
+                        }
+
+                        <div class="mb-3">
+                            <label class="form-label">EMAIL_ADDRESS_</label>
+                            <input type="email" class="form-control" name="email" [(ngModel)]="email" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">PASSWORD_</label>
+                            <input type="password" class="form-control" name="password" [(ngModel)]="password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mb-3">
+                            @if (isLoginMode) { INICIAR_SESIÓN } @else { CREAR_PERFIL }
+                        </button>
+
+                        <div class="text-center mt-3 border-top border-secondary pt-3">
+                            <a href="javascript:void(0)" (click)="toggleMode()" class="text-muted text-decoration-none" style="font-size: 0.8rem; font-family: 'VT323'; font-size: 1.2rem;">
+                                @if (isLoginMode) { [ NO TIENES CUENTA? REGÍSTRATE AQUÍ ] }
+                                @else { [ YA TIENES ACCESO? VUELVE AL LOGIN ] }
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

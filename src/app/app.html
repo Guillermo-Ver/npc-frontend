@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+            <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="80" height="80" fill="none" stroke="#00FF41" stroke-width="5" />
+                <path d="M30 70 L50 30 L70 70" fill="none" stroke="#00FF41" stroke-width="5" />
+                <circle cx="50" cy="50" r="2" fill="#00FF41" class="blink" />
+            </svg>
+            <span>&lt;NPC/&gt;</span>
+        </a>
+        
+        <div class="ms-4 d-none d-lg-block">
+            <a routerLink="/about" class="text-secondary text-decoration-none hover-glow font-monospace small">
+                > SYSTEM_INFO
+            </a>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            <a routerLink="/drops" class="text-white text-decoration-none me-2 border-bottom border-primary pb-1"
+                style="font-family: 'VT323'; font-size: 1.2rem;">&gt; DROPS_</a>
+
+            @if (username) {
+            <a routerLink="/cart" class="btn btn-outline-primary btn-sm position-relative me-2 transition-all"
+                [class.cart-animating]="isCartAnimating"
+                style="font-family: 'VT323'; font-size: 1.1rem; letter-spacing: 1px;">
+                CART [{{ cartCount }}]
+            </a>
+
+            <a routerLink="/profile" class="text-primary me-3 text-decoration-none transition-all hover-glow"
+                style="font-family: 'VT323'; font-size: 1.2rem; letter-spacing: 1px; cursor: pointer;">
+                &gt; USER: {{ username }}
+            </a>
+
+            <button (click)="logout()" class="btn btn-outline-danger btn-sm"
+                style="font-family: 'VT323'; font-size: 1rem; padding: 2px 8px;">
+                LOGOUT_
+            </button>
+            } @else {
+            <a routerLink="/login" class="btn btn-primary btn-sm">LOGIN_</a>
+            }
+        </div>
+    </div>
+</nav>
+
+<main class="mt-5 pt-5">
+    <router-outlet></router-outlet>
+</main>
